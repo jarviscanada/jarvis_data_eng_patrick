@@ -1,7 +1,7 @@
 # Linux Cluster Monitoring Agent
 This project is under development. Since this project follows the GitFlow, the final work will be merged to the master branch after Team Code Team.
 
-![architecture](./assets/architecture.jpg)
+![architecture](./assets/arch.png)
 
 host_info.sh: collects the host hardware info and insert it into the database. It will be run only once at the installation time.
 
