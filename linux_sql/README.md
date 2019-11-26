@@ -7,4 +7,6 @@ host_info.sh: collects the host hardware info and insert it into the database. I
 
 host_usage.sh: collects the current host usage (CPU and Memory) and then insert into the database. It will be triggered by the crontab job every minute.
 
+ddl.sql: we use to initialize the database.
+
 queries.sql: Writing sql queries to answer some business question.
