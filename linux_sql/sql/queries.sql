@@ -14,7 +14,7 @@ SELECT
   (host_info.total_mem - host_usage.memory_free) / host_info.total_mem * 100 AS percentage,
   host_info.total_mem,
   host_usage.timestamp AS timestamp,
-  date_trunc('hour', host_usage.timestamp) + INTERVAL '5 min' * ROUND( date_part('minute', host_usage.timestamp) / 5.0) AS itvl;
+  date_trunc('hour', host_usage.timestamp) + INTERVAL '5 min' * ROUND( date_part('minute', host_usage.timestamp) / 5.0) AS itvl
 FROM host_info 
 RIGHT OUTER JOIN host_usage ON host_info.id=host_usage.host_id;
 
@@ -22,5 +22,5 @@ SELECT
   host_id, 
   host_name, 
   total_mem, 
-  AVG(percentage) over (partition by itvl) AS avg_usage
+  CAST(AVG(percentage) over (partition by itvl) AS INTEGER) AS avg_usage
 FROM avgs;
