@@ -6,12 +6,20 @@
 # Example
 #bash scripts/host_usage.sh localhost 5432 host_agent postgres password
 
+#setup arguments
 psql_host=$1
 psql_port=$2
 db_name=$3
 psql_user=$4
 password=$5
 export PGPASSWORD=$password
+
+#validate arguments
+if [ "$#" -ne 5 ]; then
+    echo "Illegal number of parameters"
+    echo "usage: host_usage.sh psql_host psql_port db_name psql_user psql_password"
+    exit 1
+fi
 
 #collects server usage data
 vmstat_out=$(vmstat --stats --unit M && vmstat --disk-sum --unit M && vmstat -wt)

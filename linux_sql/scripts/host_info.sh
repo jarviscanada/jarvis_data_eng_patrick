@@ -5,12 +5,20 @@
 # Example
 #./scripts/host_info.sh "localhost" 5432 "host_agent" "postgres" "mypassword"
 
+#Setup arguments
 psql_host=$1
 psql_port=$2
 db_name=$3
 psql_user=$4
 password=$5
 export PGPASSWORD=$password
+
+#validate arguments
+if [ "$#" -ne 5 ]; then
+    echo "Illegal number of parameters"
+    echo "usage: host_info.sh psql_host psql_port db_name psql_user psql_password"
+    exit 1
+fi
 
 #collecting hardware specification data
 hostname=$(hostname -f)
