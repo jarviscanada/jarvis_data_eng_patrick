@@ -11,13 +11,13 @@ export PGPASSWORD="$db_password"
 # check if there is too many arguments
 if (($#>2));
 then
-	echo "WARNING: You have entered too many arguments...
-Format: psql_docker.sh start [password] OR psql_docker.sh stop" >&2
+	echo "Invalid Argument"
+	echo "usage: psql_docker.sh start|stop [password for database]"
 	exit 1
 fi
 
 # check arguments is start or stop
-if [ "$operation" == "start" ];
+if [[ "$operation" == "start" && "$#" == 2 ]];
 then
 	# start docker_deamon
 	systemctl status docker || systemctl start docker
@@ -54,6 +54,10 @@ then
 	systemctl status docker && docker stop jrvs-psql
 	systemctl status docker && systemctl stop docker
 	exit 0
+else
+	echo "invalid arguments"
+	echo "usage: psql_docker.sh start|stop [password for database]"
+	exit 1
 fi
 
 exit 0
