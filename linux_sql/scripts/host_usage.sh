@@ -18,8 +18,8 @@ vmstat_out=$(vmstat --stats --unit M && vmstat --disk-sum --unit M && vmstat -wt
 timestamp=$(echo "$vmstat_out" | tail -n 1 | awk '{printf("%s %s",  $(NF-1), $NF)}')
 host_name=$(hostname -f)
 memory_free=$(echo "$vmstat_out" | egrep "free memory" | awk '{print$1}')
-cpu_idle=$(echo "$vmstat_out" | tail -n 1 | awk '{print $(NF-2)}')
-cpu_kernel=$(uname -s)
+cpu_idel=$(echo "$vmstat_out" | tail -n 1 | awk '{print $(NF-2)}')
+cpu_kernel=$(echo "$vmstat_out" |awk 'END {print $14}')
 disk_io=$(echo "$vmstat_out" | egrep "inprogress" | awk '{print $1 * 1000}')
 disk_available=$(echo "$(df -BM /)" | tail -n 1 | awk '{print substr($4, 0, length($4)-1)}')
 
@@ -28,7 +28,7 @@ psql -h $psql_host -U $psql_user -w $db_name -p $psql_port -c "INSERT INTO host_
 							       cpu_idle, cpu_kernel, disk_io, disk_available)
 							       VALUES ('$timestamp', 
 							       (SELECT id FROM host_info WHERE hostname='$host_name'),
-							       '$memory_free', '$cpu_idle','$cpu_kernel', '$disk_io', 
+							       '$memory_free', '$cpu_idel','$cpu_kernel', '$disk_io', 
 							       '$disk_available');"
 							
 exit 0
