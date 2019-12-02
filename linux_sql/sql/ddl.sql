@@ -5,6 +5,7 @@ CREATE DATABASE host_agent;
 --connect to the new database;
 \c host_agent
 
+--create table
 CREATE TABLE PUBLIC.host_info
 	(
 		id			SERIAL NOT NULL,
