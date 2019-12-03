@@ -34,9 +34,9 @@ timestamp=$(echo "$(vmstat -t)" | tail -n 1 | awk '{printf("%s %s",  $(NF-1), $N
 echo $timestamp
 
 #insert the data to the psql instance.
-psql -h $psql_host -U $psql_user -w $db_name -p $psql_port -c "INSERT INTO host_info (hostname, cpu_number, cpu_architecture, 
-							       cpu_model, cpu_mhz, L2_cache, total_mem, timestamp)
-							       VALUES ('$hostname', '$cpu_number', '$cpu_architecture', 
-							       '$cpu_model', '$cpu_mhz', '$L2_cache', '$total_mem', '$timestamp');"
+psql -h $psql_host -U $psql_user -w $db_name -p $psql_port -c "INSERT INTO host_info (hostname, cpu_number, cpu_architecture, \
+cpu_model, cpu_mhz, L2_cache, total_mem, timestamp) \
+VALUES ('$hostname', '$cpu_number', '$cpu_architecture', \
+'$cpu_model', '$cpu_mhz', '$L2_cache', '$total_mem', '$timestamp');"
 							   
 exit 0

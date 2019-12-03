@@ -33,11 +33,11 @@ disk_io=$(echo "$vmstat_out" | egrep "inprogress" | awk '{print $1 * 1000}')
 disk_available=$(echo "$(df -BM /)" | tail -n 1 | awk '{print substr($4, 0, length($4)-1)}')
 
 #insert the data into the psql database.
-psql -h $psql_host -U $psql_user -w $db_name -p $psql_port -c "INSERT INTO host_usage (timestamp, host_id, memory_free,
-							       cpu_idel, cpu_kernel, disk_io, disk_available)
-							       VALUES ('$timestamp', 
-							       (SELECT id FROM host_info WHERE hostname='$host_name'),
-							       '$memory_free', '$cpu_idel','$cpu_kernel', '$disk_io', 
-							       '$disk_available');"
+psql -h $psql_host -U $psql_user -w $db_name -p $psql_port -c "INSERT INTO host_usage (timestamp, host_id, memory_free, \
+cpu_idel, cpu_kernel, disk_io, disk_available)\
+VALUES ('$timestamp', \
+(SELECT id FROM host_info WHERE hostname='$host_name'),\
+'$memory_free', '$cpu_idel','$cpu_kernel', '$disk_io', \
+'$disk_available');"
 							
 exit 0
