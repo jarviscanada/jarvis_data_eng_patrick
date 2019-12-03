@@ -15,23 +15,36 @@ of each node and be able to analyze those data in order to prevent potential iss
   
 ## usage
 1.`psql_docker.sh` takes 1 to 2 inputs, it can be either start or stop the docker.  
-
+To start
 ```
 start:psql_docker.sh start password
 ```
+To stop
+```
+psql_docker.sh stop
+```  
 
-```stop: psql_docker.sh stop```  
-
-2.`host_info.sh` takes 5 input `psql_host psql_port db_name psql_user psql_password`  
+2.`host_info.sh` takes 5 input: psql_host, psql_port, db_name, psql_user, psql_password.  
  * we connect to `psql_host` through `psql_port` as `psql_user` with `psql_password` and store data in `db_name`.  
+```
+bash ./scripts/host_info.sh psql_host psql_port db_name psql_user psql_password
+```  
  
-3.`host_usage.sh` takes 5 input `psql_host psql_port db_name psql_user psql_password`  
+2.`host_usage.sh` takes 5 input: psql_host, psql_port, db_name, psql_user, psql_password.
  * we connect to `psql_host` through `psql_port` as `psql_user` with `psql_password` and store data in `db_name`.  
+```
+bash ./scripts/host_usage.sh psql_host psql_port db_name psql_user psql_password
+```  
  
-4.`ddl.sql` usage: `psql -h localhost -U postgres -w db_name -f ./.../ddl.sql`  
+4.`ddl.sql` usage:  
+```
+psql -h localhost -U postgres -w db_name -f ./.../ddl.sql
+```  
 
-5.`queries.sql` usage: `psql -h localhost -U postgres -w db_name -f ./.../queries.sql`  
-  
+5.`queries.sql` usage:  
+```
+psql -h localhost -U postgres -w db_name -f ./.../queries.sql
+```  
 ## Improvement  
 1.could collect more data in host_usage and host_info for monitoring.  
 2.could have functions that display the data we collect.  
