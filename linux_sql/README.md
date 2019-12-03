@@ -29,6 +29,6 @@ of each node and be able to analyze those data in order to prevent potential iss
 5.`queries.sql` usage: `psql -h localhost -U postgres -w db_name -f ./.../queries.sql`  
   
 ## Improvement  
-1.should have a better order of implemetation, with a better orgnization with the github branches.  
-2.check code more and commit less.  
-3.do not mess up with merging files.  
+1.could collect more data in host_usage and host_info for monitoring.  
+2.could have functions that display the data we collect.
+3.could use one scripts to run all the sub scripts and sql files.
