@@ -51,7 +51,6 @@ elif [[ "$operation" == "stop" && "$#" == 1 ]];
 then
 	#stop the container & the docker
 	systemctl status docker && docker stop jrvs-psql
-	systemctl status docker && systemctl stop docker
 	exit 0
 else
 	echo "invalid arguments"
