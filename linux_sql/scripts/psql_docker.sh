@@ -33,7 +33,6 @@ then
 		if [[ "$(docker ps -a -f name=jrvs-psql | wc -l)" == 2 ]];
 		then
 			docker stop jrvs-psql
-			docker container rm jrvs-psql
 		fi
 		# create the volume and container
 		docker volume create pgdata
