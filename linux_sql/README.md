@@ -6,7 +6,7 @@ of each node and be able to analyze those data in order to prevent potential iss
 ## Architecture and design
 ![my image](./assets/arch.png) 
 # Database  
-# host_info table store the information of the hardware specifcations data of the host.  
+host_info table store the information of the hardware specifcations data of the host.  
 * `id`: Unique id number corresponding to each node, is a primary key in the table and auto-incremented by PostgreSQL
 * `hostname`: The fully qualified hostname of the node; assumed to be an indentifier and subject to a unique constraint
 * `cpu_number`: Number of cores in the CPU
@@ -16,7 +16,7 @@ of each node and be able to analyze those data in order to prevent potential iss
 * `L2_cache`: Size of the L2 cache, measured in kB
 * `total_mem`: Total amount of memory on the system, measured in kB
 * `timestamp`: UTC timestamp of when node hardware specifcations were collected  
-# host_usage table store server usage data of the host.  
+host_usage table store server usage data of the host.  
 * `timestamp`: UTC timestamp of when node resource usage information was collected
 * `host_id`: The node's id, corresponds to id in the host_info table and represents a foreign key constraint
 * `memory_free`: Amount of idle memory, measured in MB
