@@ -38,10 +38,8 @@ then
 		docker volume create pgdata
 		docker run --name jrvs-psql -e POSTGRES_PASSWORD=$PGPASSWORD -d -v pgdata:/var/lib/postgresql/data -p 5432:5432 postgres
 	# check if the container is created or not
-	elif [[ "$(docker container ls -a | egrep "jrvs-psql$" | wc -l)" == 0 ]];
-	then 
-		docker run --name jrvs-psql -e POSTGRES_PASSWORD=$PGPASSWORD -d -v pgdata:/var/lib/postgresql/data -p 5432:5432 postgres
-	else
+	elif [[ "$(docker container ls -a | egrep "jrvs-psql$" | wc -l)" == 2 ]];
+	then
 		#start the container
 		docker start jrvs-psql
 		exit 0
