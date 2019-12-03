@@ -1,5 +1,3 @@
-# Linux Cluster Monitoring Agent
-  
 ## Introduction
 The main task about this project is we want to record the hardware specification of 10 different nodes and monitor nodes resource usages such as memory
 used in realtime. We collect data using shell scripts and store the data in postgreSQL database. This help the LCA team to monitor the hardware status
