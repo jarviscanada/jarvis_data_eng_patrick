@@ -16,9 +16,11 @@ of each node and be able to analyze those data in order to prevent potential iss
 ## usage
 1.`psql_docker.sh` takes 1 to 2 inputs, it can be either start or stop the docker.  
 
-```start:`psql_docker.sh start password```
+```
+start:psql_docker.sh start password
+```
 
-```stop: `psql_docker.sh stop```  
+```stop: psql_docker.sh stop```  
 
 2.`host_info.sh` takes 5 input `psql_host psql_port db_name psql_user psql_password`  
  * we connect to `psql_host` through `psql_port` as `psql_user` with `psql_password` and store data in `db_name`.  
