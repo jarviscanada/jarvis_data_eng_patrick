@@ -5,8 +5,8 @@ of each node and be able to analyze those data in order to prevent potential iss
   
 ## Architecture and design
 ![my image](./assets/arch.png) 
-Database  
-host_info table store the information of the hardware specifcations data of the host.  
+# Database  
+# host_info table store the information of the hardware specifcations data of the host.  
 * `id`: Unique id number corresponding to each node, is a primary key in the table and auto-incremented by PostgreSQL
 * `hostname`: The fully qualified hostname of the node; assumed to be an indentifier and subject to a unique constraint
 * `cpu_number`: Number of cores in the CPU
@@ -16,7 +16,7 @@ host_info table store the information of the hardware specifcations data of the 
 * `L2_cache`: Size of the L2 cache, measured in kB
 * `total_mem`: Total amount of memory on the system, measured in kB
 * `timestamp`: UTC timestamp of when node hardware specifcations were collected  
-host_usage table store server usage data of the host.  
+# host_usage table store server usage data of the host.  
 * `timestamp`: UTC timestamp of when node resource usage information was collected
 * `host_id`: The node's id, corresponds to id in the host_info table and represents a foreign key constraint
 * `memory_free`: Amount of idle memory, measured in MB
@@ -24,7 +24,7 @@ host_usage table store server usage data of the host.
 * `cpu_kernel`: Percentage of total CPU time spent idle
 * `disk_io`: Number of current disk I/O operations in progress
 * `disk_available`: Amount of disk space available, measured in MB  
-File Description:  
+# File Description:  
 * `ddl.sql` is used to create database and table to store the data we collect, we have two tables to store hardware infomation and usage.  
 * `queries.sql` is used to write sql queries to answer business question in order to manage the cluster better.  
 * `psql_docker.sh` is used to start docker server, create docker container and volumn  
