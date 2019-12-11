@@ -22,22 +22,19 @@ public class JavaGrepImpTest {
   @Before
   public void setUp() throws Exception {
     grepImp = new JavaGrepImp();
-    inputFile = "grep.out";
+    inputFile = "./testing/testtxt1.txt";
     outputFile = "grep.out";
-    root = ".";
-    regex = ".*(xml).*";
+    root = "./testing";
+    regex = ".*txt.*";
 
     testList = new ArrayList<File>();
-    testList.add(new File("./README.md"));
-    testList.add(new File("./grep.out"));
-    testList.add(new File("./pom.xml"));
-    testList.add(new File("./grep.iml"));
+    testList.add(new File("./testing/testtxt1.txt"));
+    testList.add(new File("./testing/testtxt2.txt"));
 
     testListName = new ArrayList<String>();
-    testListName.add("./README.md");
-    testListName.add("./grep.out");
-    testListName.add("./pom.xml");
-    testListName.add("./grep.iml");
+    testListName.add("new");
+    testListName.add("read");
+    testListName.add("good");
     grepImp.setRegex(regex);
     grepImp.setRootPath(root);
     grepImp.setOutFile(outputFile);
@@ -65,8 +62,8 @@ public class JavaGrepImpTest {
 
   @Test
   public void containsPattern() {
-    assertTrue(grepImp.containsPattern(testList.get(2).getName()));
-    assertFalse(grepImp.containsPattern(testList.get(3).getName()));
+    assertTrue(grepImp.containsPattern(testList.get(0).getName()));
+    assertTrue(grepImp.containsPattern(testList.get(1).getName()));
   }
 
   @Test
