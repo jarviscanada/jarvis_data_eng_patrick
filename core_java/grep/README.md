@@ -19,7 +19,7 @@ grep .*txt.* ./grep tmp/grep.out
 
 # Pseudocode
 The pseudocode for the project is showing below, how the project actually work:  
-##Process()
+## Process()
 ```
 matchedLines = []
 for file in listFilesRecursively(rootDir)
@@ -27,31 +27,39 @@ for file in listFilesRecursively(rootDir)
       if containsPattern(line)
         matchedLines.add(line)
 writeToFile(matchedLines)
-```
+```  
 First create a empty list for later storing the matching lines, Then we recursively walk thourgh our root directory by calling `listfile()`.
 for each file we listed, we call `readLines()` on that file and call `containsPattern()` on each line we read from that file. After we store
 all target line we call `writeToFile()` to write them into our output file.  
 
-##listfile()
+## listfile()
 ```
 fileList = []
 for file in rootDir
   fileList.add(file.name)
 return fileList
-```
+```  
 Traverse a given directory and return all files  
 
-##readLines()
+## readLines()
 ```
 listString = []
-for line in inputfile
+for line in inputfile.readline()
   listString.add(line)
 return listString
+```  
+Read a file and return all the lines  
 
+## containsPattern()  
+check if a line contains the regex pattern (passed by user).  
+
+## writeToFile()
+Write lines to a file.  
 
 # Performance Issue
-(30-60 words)
-discuss the memory issue
+The program won't work on large files since we are reading line by
+line and store them into the memory for further processing.
+The larger file we want to process, the more memory it require.   
 
 # Improvement
 List three things you can improve in this project.
