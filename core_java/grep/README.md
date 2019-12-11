@@ -62,4 +62,6 @@ line and store them into the memory for further processing.
 The larger file we want to process, the more memory it require.   
 
 # Improvement
-List three things you can improve in this project.
+1. Due to the efficiency we improve our grep app using stream  
+2. Could have more argument for the Grep class to store more imformation such as matchedLines and listfile.  
+3. could make the java doc more readable
