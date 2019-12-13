@@ -1,6 +1,5 @@
 package ca.jrvs.apps.grep;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.IO;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
