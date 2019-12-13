@@ -1,0 +1,3 @@
+   * @throws IllegalArgumentException if a given inputFile is not a file
+      throw new IllegalArgumentException("USAGE: regex rootpath outFile");
+   * @throws IllegalArgumentException if a given inputFile is not a file
