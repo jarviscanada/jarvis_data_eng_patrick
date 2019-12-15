@@ -18,6 +18,7 @@ public class OrderDAO extends DataAccessObject<Order> {
       "on ol.product_id = p.product_id where o.order_id = ?";
   private static final String GET_FOR_CUST = "SELECT * FROM get_orders_by_customer(?)";
 
+  //start the connection
   public OrderDAO(Connection connection) {
     super(connection);
   }
