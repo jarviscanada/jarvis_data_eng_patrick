@@ -10,16 +10,13 @@ import java.util.Date;
 import java.util.List;
 
 public class OrderDAO extends DataAccessObject<Order> {
-
   //SQL queries for functions.
-  private final static String GET_BY_ID = "SELECT c.first_name, c.last_name, c.email, o.order_id, o.creation_date, " +
+  private static final String GET_BY_ID = "SELECT c.first_name, c.last_name, c.email, o.order_id, o.creation_date, " +
       "o.total_due, o.status, s.first_name, s.last_name, s.email, ol.quantity, p.code, p.name, p.size, " +
       "p.variety, p.price FROM orders o JOIN customer c on o.customer_id = c.customer_id JOIN salesperson s " +
       "on o.salesperson_id = s.salesperson_id JOIN order_item ol on ol.order_id = o.order_id JOIN product p " +
       "on ol.product_id = p.product_id where o.order_id = ?";
-
   private static final String GET_FOR_CUST = "SELECT * FROM get_orders_by_customer(?)";
-
 
   public OrderDAO(Connection connection) {
     super(connection);
@@ -47,7 +44,6 @@ public class OrderDAO extends DataAccessObject<Order> {
           order.setSalespersonFirstName(resultSet.getString(8));
           order.setSalespersonLastName(resultSet.getString(9));
           order.setSalespersonEmail(resultSet.getString(10));
-
         }
         OrderLine orderLine = new OrderLine();
         orderLine.setQuantity(resultSet.getInt(11));
@@ -87,16 +83,16 @@ public class OrderDAO extends DataAccessObject<Order> {
   }
 
   //get order for customer
-  public List<Order> getOrdersForCustomer(long customerId){
+  public List<Order> getOrdersForCustomer(long customerId) {
     List<Order> orders = new ArrayList<>();
-    try(PreparedStatement statement = this.connection.prepareStatement(GET_FOR_CUST);){
+    try (PreparedStatement statement = this.connection.prepareStatement(GET_FOR_CUST);) {
       statement.setLong(1, customerId);
       ResultSet resultSet = statement.executeQuery();
       long orderId = 0;
       Order order = null;
-      while(resultSet.next()){
+      while (resultSet.next()) {
         long localOrderId = resultSet.getLong(4);
-        if(orderId!=localOrderId){
+        if (orderId != localOrderId) {
           order = new Order();
           orders.add(order);
           order.setId(localOrderId);
@@ -122,7 +118,7 @@ public class OrderDAO extends DataAccessObject<Order> {
         orderLine.setProductPrice(resultSet.getBigDecimal(16));
         order.getOrderLines().add(orderLine);
       }
-    }catch(SQLException e){
+    } catch (SQLException e) {
       e.printStackTrace();
       throw new RuntimeException(e);
     }
