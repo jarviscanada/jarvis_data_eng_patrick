@@ -6,9 +6,9 @@ The dependancy between each layer and the usage of DAO. I gain more experience o
 of Springframework. 
 
 # Design  
-##UML diagram
+## UML diagram
 ![twitterUML](./assets/twitterstructure.png)
-##Component explaination
+## Component explaination
 - `TwitterCLIapp`: TwitterCLIapp is the app it self and takes in the users input. Once the 
 user call the app it will pass the command to the controller and invoke controller's functions
 to complete the tasks.  
@@ -24,19 +24,19 @@ app and Twitter server to make post show and delete tweet.
 
 
 # Quick Start
-##MVN
+## MVN
 - To build the project, go into the `java/twitter` directory and run `mvn package` in command 
 line.
-##Usage
-#####PostTweet
+## Usage
+##### PostTweet
 - Usage: `TwitterCLIApp post "Text" "Longitude:Latitude"`  
 `"Text"`: The text user wanna post.  
 `"Longitude:Latitude"`: User's current location.  
-#####ShowTweet
+##### ShowTweet
 - Usage: `TwitterCLIApp show "ID" "Fields"`  
 `"ID"`: The Id of the tweet that you want to show.  
 `"Fields"`: Fields indicated which part to show in the result.
-#####DeleteTweet
+##### DeleteTweet
 - Usage: `TwitterCLIApp delete "IDs"`  
 `"IDs`: List of ID corresponding to the tweets user wants to delete.
 
