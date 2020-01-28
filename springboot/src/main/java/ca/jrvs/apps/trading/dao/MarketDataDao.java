@@ -4,6 +4,8 @@ import ca.jrvs.apps.trading.model.config.MarketDataConfig;
 import ca.jrvs.apps.trading.model.domain.IexQuote;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -105,6 +107,7 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
       ObjectMapper mapper = new ObjectMapper();
       for (String ticker : tickers){
         String quoteString = jsonObject.getJSONObject(ticker).getJSONObject("quote").toString();
+        System.out.println(quoteString);
         try {
           quote = mapper.readValue(quoteString, IexQuote.class);
         }catch (IOException e){
