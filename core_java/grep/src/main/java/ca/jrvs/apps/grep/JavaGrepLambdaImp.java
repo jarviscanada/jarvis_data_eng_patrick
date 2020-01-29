@@ -35,7 +35,7 @@ public class JavaGrepLambdaImp extends JavaGrepImp {
     try {
       return Files.walk(p).map(Path::toFile).collect(Collectors.toList());
     } catch (IOException e){
-      e.printStackTrace();
+      throw new RuntimeException("listFile failed");
     }
     return null;
   }
@@ -49,7 +49,7 @@ public class JavaGrepLambdaImp extends JavaGrepImp {
     try {
       return Files.lines(p).collect(Collectors.toList());
     } catch (IOException e) {
-      e.printStackTrace();
+      throw new RuntimeException("readline failed.");
     }
     return null;
   }
