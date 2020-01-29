@@ -15,9 +15,6 @@ import org.springframework.http.HttpMethod;
 
 public class TwitterHttpHelper implements HttpHelper {
 
-  /**
-   * Dependencies are specified as private member variable
-   */
   private OAuthConsumer consumer;
   private HttpClient httpClient;
 
@@ -34,9 +31,6 @@ public class TwitterHttpHelper implements HttpHelper {
       String tokenSecret){
     consumer = new CommonsHttpOAuthConsumer(consumerKey, consumerSecret);
     consumer.setTokenWithSecret(accessToken, tokenSecret);
-    /**
-     * Default = single connection. Discuss source code if time permit
-     */
     httpClient = HttpClientBuilder.create().build();
   }
 

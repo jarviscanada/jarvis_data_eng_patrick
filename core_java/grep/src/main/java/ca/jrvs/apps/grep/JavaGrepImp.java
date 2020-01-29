@@ -26,7 +26,7 @@ public class JavaGrepImp implements JavaGrep {
     try {
       javaGrepImp.process();
     } catch (Exception ex) {
-      ex.printStackTrace();
+      throw new RuntimeException("Unable to process");
     }
   }
 
@@ -95,7 +95,7 @@ public class JavaGrepImp implements JavaGrep {
       }
       scanner.close();
     } catch (IOException e) {
-      e.printStackTrace();
+      throw new RuntimeException("unable to readline");
     }
     return listString;
   }
