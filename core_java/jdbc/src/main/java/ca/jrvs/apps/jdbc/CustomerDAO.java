@@ -73,7 +73,6 @@ public class CustomerDAO extends DataAccessObject<Customer> {
     try{
       this.connection.setAutoCommit(false);
     }catch (SQLException e){
-      e.printStackTrace();
       throw new RuntimeException(e);
     }
     try(PreparedStatement statement = this.connection.prepareStatement(UPDATE);){
