@@ -1,6 +1,6 @@
 package ca.jrvs.apps.trading;
 
-class HelloWorld {
+class Application {
 
   // Your program begins with a call to main().
   // Prints "Hello, World" to the terminal window.
