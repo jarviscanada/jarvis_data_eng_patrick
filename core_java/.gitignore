@@ -1,2 +1,7 @@
-/grep/target/
-/.idea/
+.log
+.
+!/.gitignore
+target/
+*iml
+*.code-workspace
+
