@@ -43,10 +43,7 @@ line.
 # Model
 The tweet model is uesd to store the http response in Json format from Twitter server.
 The tweet model contain 11 fields. We use JsonParser in the dao package to parse the 
-properties to a tweet object. In the 11 fields, the "coordinates", "entities", "hashtags"
-, and "user_mentions" properties are corresponding to the `Coordinates`, `Entities`, 
-`Hashtags`, and `UserMentions` objects in the model package. The Json showing below is an
-example of a tweet object.
+properties to a tweet object.
 ```
 //Simplified Tweet Object 
 {
