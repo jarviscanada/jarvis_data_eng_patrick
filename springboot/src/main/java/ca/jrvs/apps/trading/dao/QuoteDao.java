@@ -80,12 +80,12 @@ public class QuoteDao implements CrudRepository<Quote, String> {
    */
   private Object[] makeUpdateValues(Quote quote){
     List<Object> values = new ArrayList<>();
-    values.add(quote.getAskPrice());
-    values.add(quote.getAskSize());
+    values.add(quote.getLastPrice());
     values.add(quote.getBidPrice());
     values.add(quote.getBidSize());
+    values.add(quote.getAskPrice());
+    values.add(quote.getAskSize());
     values.add(quote.getTicker());
-    values.add(quote.getLastPrice());
     return values.toArray();
   }
 
@@ -127,7 +127,7 @@ public class QuoteDao implements CrudRepository<Quote, String> {
 
   @Override
   public List<Quote> findAll() {
-    String sql = "SELECR * FROM " + TABLE_NAME;
+    String sql = "SELECT * FROM " + TABLE_NAME;
     return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Quote.class));
   }
 
@@ -167,7 +167,7 @@ public class QuoteDao implements CrudRepository<Quote, String> {
 
   @Override
   public void deleteAll() {
-    String sql = "DELET FROM " + TABLE_NAME;
+    String sql = "DELETE FROM " + TABLE_NAME;
     jdbcTemplate.update(sql);
   }
 }

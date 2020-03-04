@@ -152,6 +152,7 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
   private Optional<String> executeHttpGet(String url) throws DataRetrievalFailureException {
     HttpClient httpClient = getHttpClient();
     HttpGet httpRequest = new HttpGet(url);
+    System.out.println(url);
     HttpResponse httpResponse;
     try {
       httpResponse = httpClient.execute(httpRequest);
