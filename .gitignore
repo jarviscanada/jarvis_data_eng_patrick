@@ -1,1 +1,9 @@
-/springboot/.idea
+/springboot/.idea/
+.log
+.
+!/.gitignore
+target/
+*iml
+*.code-workspace
+
+
