@@ -14,17 +14,14 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class TwitterDao implements CrdDao<Tweet, String> {
 
-  //URI constant
   private static final String API_BASE_URI = "https://api.twitter.com";
   private static final String POST_PATH = "/1.1/statuses/update.json";
   private static final String SHOW_PATH = "/1.1/statuses/show.json";
   private static final String DELETE_PATH = "/1.1/statuses/destroy";
-  //URI symbols
   private static final String QUERY_SYM = "?";
   private static final String AMPERSAND = "&";
   private static final String EQUAL = "=";
 
-  //Response code
   private static final int HTTP_OK = 200;
 
   private HttpHelper httpHelper;
@@ -49,10 +46,8 @@ public class TwitterDao implements CrdDao<Tweet, String> {
       throw new IllegalArgumentException("Invalid tweet input", e);
     }
 
-    //Execite Http request
     HttpResponse response = httpHelper.httpPost(uri);
 
-    //Validate response and deser response to tweet object
     return parseResponseBody(response);
   }
 
@@ -136,7 +131,14 @@ public class TwitterDao implements CrdDao<Tweet, String> {
     return tweet;
   }
 
-  //get Post method URI
+  /**
+   * get Post method URI
+   *
+   * @param tweet using this tweet to generate post uri
+   * @return uri
+   * @throws URISyntaxException
+   */
+
   private URI getPostUri(Tweet tweet) throws URISyntaxException {
     PercentEscaper percentEscaper = new PercentEscaper("", false);
     return new URI(API_BASE_URI + POST_PATH + QUERY_SYM
@@ -145,12 +147,24 @@ public class TwitterDao implements CrdDao<Tweet, String> {
         + AMPERSAND + "lat" + EQUAL + tweet.getCoordinates().getTweetcoordinates().get(1));
   }
 
-  //get Get method URI
+  /**
+   * get Get method URI
+   *
+   * @param string String used to generate uri
+   * @return uri
+   * @throws URISyntaxException
+   */
   private URI getGetUri(String string) throws URISyntaxException {
     return new URI(API_BASE_URI + SHOW_PATH + QUERY_SYM + "id" + EQUAL + string);
   }
 
-  //get Delete method URI
+  /**
+   * get Delete method URI
+   *
+   * @param string String used to generate uri
+   * @return URI
+   * @throws URISyntaxException
+   */
   private URI getDeleteUri(String string) throws URISyntaxException {
     return new URI(API_BASE_URI + DELETE_PATH + "/" + string + ".json");
   }

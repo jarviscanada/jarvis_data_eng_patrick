@@ -67,3 +67,4 @@ public class Quote implements Entity<String>{
     this.askSize = askSize;
   }
 }
+

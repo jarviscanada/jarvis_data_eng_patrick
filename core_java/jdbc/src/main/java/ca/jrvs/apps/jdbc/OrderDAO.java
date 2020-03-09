@@ -10,7 +10,6 @@ import java.util.Date;
 import java.util.List;
 
 public class OrderDAO extends DataAccessObject<Order> {
-  //SQL queries for functions.
   private static final String GET_BY_ID = "SELECT c.first_name, c.last_name, c.email, o.order_id, o.creation_date, " +
       "o.total_due, o.status, s.first_name, s.last_name, s.email, ol.quantity, p.code, p.name, p.size, " +
       "p.variety, p.price FROM orders o JOIN customer c on o.customer_id = c.customer_id JOIN salesperson s " +
@@ -18,13 +17,17 @@ public class OrderDAO extends DataAccessObject<Order> {
       "on ol.product_id = p.product_id where o.order_id = ?";
   private static final String GET_FOR_CUST = "SELECT * FROM get_orders_by_customer(?)";
 
-  //start the connection
   public OrderDAO(Connection connection) {
     super(connection);
   }
 
   @Override
-  //find order by ID
+  /**
+   * Find order by their unique Id
+   *
+   * @param id the id for the order
+   * @throw RuntimeException
+   */
   public Order findById(long id) {
     Order order = new Order();
     try(PreparedStatement statement = this.connection.prepareStatement(GET_BY_ID);){
@@ -57,7 +60,6 @@ public class OrderDAO extends DataAccessObject<Order> {
       }
       order.setOrderLines(orderLines);
     }catch(SQLException e){
-      e.printStackTrace();
       throw new RuntimeException(e);
     }
     return order;
@@ -83,7 +85,12 @@ public class OrderDAO extends DataAccessObject<Order> {
 
   }
 
-  //get order for customer
+  /**
+   * get order for customer
+   *
+   * @param customerId the id of customer
+   * @return list of Order
+   */
   public List<Order> getOrdersForCustomer(long customerId) {
     List<Order> orders = new ArrayList<>();
     try (PreparedStatement statement = this.connection.prepareStatement(GET_FOR_CUST);) {
@@ -120,7 +127,6 @@ public class OrderDAO extends DataAccessObject<Order> {
         order.getOrderLines().add(orderLine);
       }
     } catch (SQLException e) {
-      e.printStackTrace();
       throw new RuntimeException(e);
     }
     return orders;

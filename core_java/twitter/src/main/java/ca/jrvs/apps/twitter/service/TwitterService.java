@@ -17,11 +17,8 @@ public class TwitterService implements Service {
 
   @Override
   public Tweet postTweet(Tweet tweet) {
-    //Business logic:
-    //e.g. text length, lat/lon range, id format
     validatePostTweet(tweet);
 
-    //create tweet via dao
     return (Tweet) dao.create(tweet);
   }
 
@@ -65,6 +62,11 @@ public class TwitterService implements Service {
     return tweets;
   }
 
+  /**
+   * check the tweet is valid or not
+   *
+   * @param tweet the tweet we want to check
+   */
   private void validatePostTweet(Tweet tweet){
     if (tweet.getText().length() > 140) {
       throw new RuntimeException("You have exceeds the words limit, please lower it under 140 words");
@@ -79,6 +81,11 @@ public class TwitterService implements Service {
     }
   }
 
+  /**
+   * check if the id is valid
+   *
+   * @param id the id we want to check
+   */
   private void validateId(String id) {
     if (id.length() != 19){
       throw new RuntimeException("The id ecceeded the words limit, it should under 19 characters.");

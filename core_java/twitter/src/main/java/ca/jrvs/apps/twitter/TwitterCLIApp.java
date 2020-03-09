@@ -35,6 +35,11 @@ public class TwitterCLIApp {
     app.run(args);
   }
 
+  /**
+   * run the app with input argument
+   *
+   * @param args
+   */
   public void run(String[] args){
     if(args.length == 0){
       throw new RuntimeException("USAGE: TwitterCLIAPP post|show|delete [options]");
@@ -54,6 +59,11 @@ public class TwitterCLIApp {
     }
   }
 
+  /**
+   * print the content of a tweet
+   *
+   * @param tweet the tweet we want to print
+   */
   private void printTweet(Tweet tweet){
     try{
       System.out.println(JsonParser.toJson(tweet, true, false));
