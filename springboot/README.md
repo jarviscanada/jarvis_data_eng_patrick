@@ -13,7 +13,7 @@ This API can be used by front-end developer and mobile-app developer to build a 
 - technologies used: The application fetch market data from [IEX CLOUD](https://iexcloud.io/console) and it store all the datas in to postgresql database. We use Spring framework to setup all the dependency for this
   application. 
 
-# Quick Start
+# QuickStart
 ## Prequiresites
 Docker(version 17.05 or higher), CentOS 7, JDK(version 1.8), Maven, IEX_CLOUD account. 
 ## Docker scritps
@@ -82,7 +82,7 @@ After setting up the docker container, you can use the API by entering http://lo
 - PSQL and IEX
     - Application fetch market data from IEX Cloud and the data will be stored in PSQL databases.
 
-# REST API Usage
+# RESTAPIUsage
 ## Swagger
 Swagger allows you to describe the structure of your APIs so that machines can read them. 
 The ability of APIs to describe their own structure is the root of all awesomeness in Swagger. 
@@ -110,7 +110,7 @@ it can deposit and withdraw fund from a given account
 - briefly explain each endpoint
   - POST `/order/marketOrder`: Submit a market order.
 
-# Docker Deployment
+# DockerDeployment
 ![Docker](./assets/Trading_App_docker.jpg)
 - As the diagram showing above. After we run the docker commands such as build docker network,
 create image and comtainer, and run the container. In the docker Host, docker daemon handle all
