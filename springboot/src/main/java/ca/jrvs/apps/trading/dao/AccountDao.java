@@ -66,6 +66,7 @@ public class AccountDao extends JdbcCrudDao<Account> {
 
   public Account updateAmountById(Account account, Double fund){
     Double newFund = account.getAmount() + fund;
+    System.out.println(newFund);
     if(newFund < 0) {
       throw new IllegalArgumentException("Withdrawal failure: insufficiant fund");
     }

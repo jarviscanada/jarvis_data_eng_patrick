@@ -77,8 +77,7 @@ public abstract class JdbcCrudDao<T extends Entity<Integer>> implements CrudRepo
   @Override
   public Optional<T> findById(Integer id) {
     Optional<T> entity = Optional.empty();
-    String selectSql = "SELECT * FROM " + getTableName() + " WHERE " + getIdColumnName() + " =?";
-    System.out.println(id);
+    String selectSql = "SELECT * FROM " + getTableName() + " WHERE " + getIdColumnName() + "=?";
     try {
       entity = Optional.ofNullable((T) getJdbcTemplate().queryForObject(selectSql,
           BeanPropertyRowMapper.newInstance(getEntityClass()), id));
@@ -90,7 +89,7 @@ public abstract class JdbcCrudDao<T extends Entity<Integer>> implements CrudRepo
 
   public List<T> findByOtherId(Integer id, String column){
     List<T> entity = new ArrayList<>();
-    String selectSql = "SELECT * FROM " + getTableName() + " WHERE " + column + " =?";
+    String selectSql = "SELECT * FROM " + getTableName() + " WHERE " + column + "=?";
     try {
       entity = getJdbcTemplate().
           query(selectSql, BeanPropertyRowMapper.newInstance(getEntityClass()), id);
@@ -104,7 +103,7 @@ public abstract class JdbcCrudDao<T extends Entity<Integer>> implements CrudRepo
   public boolean existsById(Integer id) {
     boolean exist = false;
     long count;
-    String existSql = "SELECT COUNT(*) FROM " + getTableName() + " WHERE " + getIdColumnName() + " =?";
+    String existSql = "SELECT COUNT(*) FROM " + getTableName() + " WHERE " + getIdColumnName() + "=?";
     try {
       count = getJdbcTemplate().queryForObject(existSql, Long.class, id);
       exist = count != 0;
@@ -143,7 +142,7 @@ public abstract class JdbcCrudDao<T extends Entity<Integer>> implements CrudRepo
 
   @Override
   public void deleteById(Integer id) {
-    String deleteSql = "DELETE FROM " + getTableName() + " WHERE " + getIdColumnName() + " =?";
+    String deleteSql = "DELETE FROM " + getTableName() + " WHERE " + getIdColumnName() + "=?";
     getJdbcTemplate().update(deleteSql, id);
   }
 

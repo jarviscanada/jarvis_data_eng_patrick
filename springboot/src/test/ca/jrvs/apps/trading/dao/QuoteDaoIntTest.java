@@ -39,7 +39,6 @@ public class QuoteDaoIntTest {
     savedQuote.setBidSize(10);
     savedQuote.setId("SDG");
     savedQuote.setLastPrice(10.1d);
-    System.out.println(quoteDao.save(savedQuote).getTicker());
   }
 
   @Test

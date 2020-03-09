@@ -6,6 +6,10 @@ public class Position implements Entity<Integer>{
   private Integer position;
   private String ticker;
 
+  public Integer getAccountId() { return accountId; }
+
+  public void setAccountId(Integer accountId) { this.accountId = accountId; }
+
   public Integer getPosition() {
     return position;
   }
@@ -31,4 +35,6 @@ public class Position implements Entity<Integer>{
   public void setId(Integer integer) {
     this.accountId = integer;
   }
+
+
 }

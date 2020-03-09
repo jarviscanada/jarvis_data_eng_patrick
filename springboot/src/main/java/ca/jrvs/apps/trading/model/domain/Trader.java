@@ -13,12 +13,12 @@ public class Trader implements Entity<Integer> {
 
   @Override
   public Integer getId() {
-    return null;
+    return this.Id;
   }
 
   @Override
   public void setId(Integer integer) {
-
+    this.Id = integer;
   }
 
   public String getCountry() {

@@ -40,15 +40,14 @@ public class TraderDaoIntTest {
 
   @Test
   public void findAllById() {
-    System.out.println(savedTrader.getId());
     List<Trader> traders = Lists.newArrayList(traderDao.findAllById(Arrays.asList(savedTrader.getId(), -1)));
     assertEquals(1, traders.size());
     assertEquals(savedTrader.getCountry(), traders.get(0).getCountry());
   }
 
-  @After
-  public void deleteOne(){
-    traderDao.deleteById(savedTrader.getId());
-  }
+//  @After
+//  public void deleteOne(){
+//    traderDao.deleteById(savedTrader.getId());
+//  }
 
 }
