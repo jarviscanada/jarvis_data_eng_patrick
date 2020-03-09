@@ -1,10 +1,10 @@
 # SPRINGBOOT Trading simulator
 Table of contents
 * [Introduction](#Introduction)
-* [QuickStart](#Quick Start)
+* [Quick Start](#QuickStart)
 * [Architecture](#Architecture)
-* [RESTAPIUsage](#REST API Usage)
-* [DockerDeployment](#Docker Deployment)
+* [REST API Usage](#RESTAPIUsage)
+* [Docker Deployment](#DockerDeployment)
 * [Improvements](#Improvements)
 
 # Introduction
